@@ -1,9 +1,11 @@
 package org.ldv.sprintbootaventure.controller
 
 import org.springframework.stereotype.Controller
-
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
+import jakarta.persistence.*
+
+
 
 
 @Controller
@@ -23,4 +25,6 @@ class MainControlleur {
 
         return "visiteur/inscription"
     }
+
+
 }

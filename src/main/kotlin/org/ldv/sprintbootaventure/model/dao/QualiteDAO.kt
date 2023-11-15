@@ -1,4 +1,7 @@
 package org.ldv.sprintbootaventure.model.dao
 
-interface QualiteDAO {
+import org.ldv.sprintbootaventure.controller.admin.Qualite
+import org.springframework.data.jpa.repository.JpaRepository
+
+interface QualiteDAO: JpaRepository<Qualite,Long>{
 }

@@ -64,13 +64,13 @@ class TypeArmeControlleur (val typeArmeDAO: TypeArmeDAO){
      * @param redirectAttributes Les attributs de redirection pour transmettre des messages à la vue suivante.
      * @return La redirection vers la page d'administration des qualités après l'ajout réussi.
      */
-    @PostMapping("/admin/qualite")
-    fun store(@ModelAttribute nouvelleQualite: Qualite, redirectAttributes: RedirectAttributes): String {
-        // Sauvegarde la nouvelle qualité dans la base de données
-        val savedQualite = this.typeArmeDAO.save(nouvelleQualite)
-        // Ajoute un message de succès pour être affiché à la vue suivante
-        redirectAttributes.addFlashAttribute("msgSuccess", "Enregistrement de ${savedQualite.nom} réussi")
-        // Redirige vers la page d'administration des qualités
-        return "redirect:/admin/qualite"
-    }
+//    @PostMapping("/admin/qualite")
+//    fun store(@ModelAttribute nouvelleQualite: Qualite, redirectAttributes: RedirectAttributes): String {
+//        // Sauvegarde la nouvelle qualité dans la base de données
+//        val savedQualite = this.typeArmeDAO.save(nouvelleQualite)
+//        // Ajoute un message de succès pour être affiché à la vue suivante
+//        redirectAttributes.addFlashAttribute("msgSuccess", "Enregistrement de ${savedQualite.nom} réussi")
+//        // Redirige vers la page d'administration des qualités
+//        return "redirect:/admin/qualite"
+//    }
 }

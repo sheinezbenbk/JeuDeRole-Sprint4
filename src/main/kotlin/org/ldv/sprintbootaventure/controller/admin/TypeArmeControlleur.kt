@@ -15,16 +15,16 @@ class TypeArmeControlleur (val typeArmeDAO: TypeArmeDAO){
      * @param model Le modèle utilisé pour transmettre les données à la vue.
      * @return Le nom de la vue à afficher.
      */
-    @GetMapping("/admin/TypeArmeControlleur")
+    @GetMapping("/admin/typearme")
     fun index(model: Model): String {
         // Récupère tout les types d'Armes depuis la base de données
         val typeArme= this.typeArmeDAO.findAll()
 
         // Ajoute la liste des types d'armes au modèle pour affichage dans la vue
-        model.addAttribute("lestypeArme", typeArme)
+        model.addAttribute("typearme", typeArme)
 
         // Retourne le nom de la vue à afficher
-        return "admin/typeArmeControlleur/index"
+        return "admin/typearme/index"
     }
     /**
      * Affiche les détails d'un type d'arme en particulier.
@@ -34,7 +34,7 @@ class TypeArmeControlleur (val typeArmeDAO: TypeArmeDAO){
      * @return Le nom de la vue à afficher.
      * @throws NoSuchElementException si le type d'arme avec l'ID spécifié n'est pas trouvée.
      */
-    @GetMapping("/admin/TypeArmeControlleur/{id}")
+    @GetMapping("/admin/typearme/{id}")
     fun show(@PathVariable id: Long, model: Model): String {
         // Récupère le type d'arme avec l'ID spécifié depuis la base de données
         val typeArme = this.typeArmeDAO.findById(id).orElseThrow()
@@ -43,7 +43,7 @@ class TypeArmeControlleur (val typeArmeDAO: TypeArmeDAO){
         model.addAttribute("letypeArme", typeArme)
 
         // Retourne le nom de la vue à afficher
-        return "admin/TypeArmeControlleur/show"
+        return "admin/typearme/show"
     }
     /**
      * Affiche le formulaire de création d'une nouvelle qualité.
@@ -51,32 +51,26 @@ class TypeArmeControlleur (val typeArmeDAO: TypeArmeDAO){
      * @param model Le modèle utilisé pour transmettre les données à la vue.
      * @return Le nom de la vue à afficher (le formulaire de création).
      */
-    @GetMapping("/admin/TypeArmeControlleur/create")
+    @GetMapping("/admin/typearme/create")
     fun create(model: Model): String {
         // Crée une nouvelle instance de Qualite avec des valeurs par défaut
         val nouveauTypeArme = TypeArme(null, 0, 0, 0,0,"")
 
         // Ajoute le nouveau type d'Arme au modèle pour affichage dans le formulaire de création
-        model.addAttribute("nouvelleTypeArme", nouveauTypeArme)
+        model.addAttribute("nouveauTypeArme", nouveauTypeArme)
 
         // Retourne le nom de la vue à afficher (le formulaire de création)
-        return "admin/TypeArmeControlleur/create"
+        return "admin/typearme/create"
     }
-    /**
-     * Gère la soumission du formulaire d'ajout d'un type d'arme'.
-     *
-     * @param nouvelleQualite L'objet Qualite créé à partir des données du formulaire.
-     * @param redirectAttributes Les attributs de redirection pour transmettre des messages à la vue suivante.
-     * @return La redirection vers la page d'administration des qualités après l'ajout réussi.
-     */
-    @PostMapping("/admin/TypeArmeControlleur")
+
+    @PostMapping("/admin/typearme")
     fun store(@ModelAttribute nouveauTypeArme: TypeArme, redirectAttributes: RedirectAttributes): String {
         // Sauvegarde le nouveau type d'Arme dans la base de données
         val savedTypeArme = this.typeArmeDAO.save(nouveauTypeArme)
         // Ajoute un message de succès pour être affiché à la vue suivante
         redirectAttributes.addFlashAttribute("msgSuccess", "Enregistrement de ${savedTypeArme.nom} réussi")
         // Redirige vers la page d'administration des types d'Armes
-        return "redirect:/admin/qualite"
+        return "redirect:/admin/typeArmeControlleur"
     }
     /**
      * Affiche les détails d'un type d'arme en particulier pour ensuite le modifier.
@@ -85,16 +79,16 @@ class TypeArmeControlleur (val typeArmeDAO: TypeArmeDAO){
      * @param model Le modèle utilisé pour transmettre les données à la vue.
      * @return Le nom de la vue à afficher.
      */
-    @GetMapping("/admin/TypeArmeControlleur/{id}/edit")
+    @GetMapping("/admin/typearme/{id}/edit")
     fun edit(@PathVariable id: Long, model: Model): String {
         // Récupère le type d'Arme avec l'ID spécifié depuis la base de données
         val leTypeArme = this.typeArmeDAO.findById(id).orElseThrow()
 
         // Ajoute le type d'Arme au modèle pour affichage dans la vue
-        model.addAttribute("nouveauTypeArme", leTypeArme)
+        model.addAttribute("typearme", leTypeArme)
 
         // Retourne le nom de la vue à afficher
-        return "admin/TypeArmeControlleur/edit"
+        return "admin/typearme/create"
     }
     /**
      * Gère la soumission du formulaire de mise à jour de typeArme.
@@ -104,7 +98,7 @@ class TypeArmeControlleur (val typeArmeDAO: TypeArmeDAO){
      * @return La redirection vers la page d'administration des qualités après la mise à jour réussie.
      * @throws NoSuchElementException si la qualité avec l'ID spécifié n'est pas trouvée dans la base de données.
      */
-    @PostMapping("/admin/TypeArmeControlleur/update")
+    @PostMapping("/admin/typearme/update")
     fun update(@ModelAttribute nouveauTypeArme: TypeArme, redirectAttributes: RedirectAttributes): String {
         // Recherche du type d'Arme existant dans la base de données
         val typeArmeModifier = this.typeArmeDAO.findById(nouveauTypeArme.id ?: 0).orElseThrow()
@@ -122,7 +116,7 @@ class TypeArmeControlleur (val typeArmeDAO: TypeArmeDAO){
         redirectAttributes.addFlashAttribute("msgSuccess", "Modification de ${savedTypeArme.nom} réussie")
 
         // Redirige vers la page d'administration des qualités
-        return "redirect:/admin/TypeArmeControlleur"
+        return "redirect:/admin/typearme"
     }
 
     /**
@@ -132,7 +126,7 @@ class TypeArmeControlleur (val typeArmeDAO: TypeArmeDAO){
      * @param redirectAttributes Les attributs de redirection pour transmettre des messages à la vue suivante.
      * @return La redirection vers la page d'administration des types d'armes après la suppression réussie.
      */
-    @PostMapping("/admin/TypeArmeControlleur/delete")
+    @PostMapping("/admin/typearme/delete")
     fun delete(@RequestParam id: Long, redirectAttributes: RedirectAttributes): String {
         // Recherche du type d'arme à supprimer dans la base de données
         val typeArme: TypeArme = this.typeArmeDAO.findById(id).orElseThrow()
@@ -144,6 +138,6 @@ class TypeArmeControlleur (val typeArmeDAO: TypeArmeDAO){
         redirectAttributes.addFlashAttribute("msgSuccess", "Suppression de ${typeArme.nom} réussie")
 
         // Redirige vers la page d'administration des qualités
-        return "redirect:/admin/TypeArmeControlleur"
+        return "redirect:/admin/typearme"
     }
 }

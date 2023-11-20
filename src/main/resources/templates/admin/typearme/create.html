@@ -12,6 +12,7 @@
 
         <form  th:action="@{/admin/typearme}" th:object="${nouveauTypeArme}" method="post">
             <h2 class="mb-4">Ajouter une Type d'Arme</h2>
+
             <!-- Input pour le nom du type arme -->
             <div class="mb-3">
                 <label for="nom" class="form-label">Nom du type d'Arme</label>
@@ -26,14 +27,20 @@
 
             <!-- Input pour la Valeur du Dé max-->
             <div class="mb-3">
-                <label for="valeurDéMax" class="form-label">La valeur du Dé maximum</label>
-                <input required min="0" max="99" type="number" class="form-control" id="valeurDéMax" name="bonusQualite" th:field="${nouveauTypeArme.nom}">
+                <label for="valeurDeMax" class="form-label">La valeur du Dé maximum</label>
+                <input required min="0" max="99" type="number" class="form-control" id="valeurDeMax" name="valeurDeMax" th:field="${nouveauTypeArme.valeurDeMax}">
             </div>
 
-            <!-- Input pour la Valeur du Dé max-->
+            <!-- Input pour le multiplicateur Critique-->
             <div class="mb-3">
                 <label for="multiplicateurCritique" class="form-label">La valeur du Dé maximum</label>
-                <input required min="0" max="99" type="number" class="form-control" id="multiplicateurCritique" name="bonusQualite" th:field="${nouveauTypeArme.bonusQualite}">
+                <input required min="0" max="99" type="number" class="form-control" id="multiplicateurCritique" name="multiplicateurCritique" th:field="${nouveauTypeArme.multiplicateurCritique}">
+            </div>
+
+            <!-- Input pour le activation Critique-->
+            <div class="mb-3">
+                <label for="activationCritique" class="form-label">La valeur du Dé maximum</label>
+                <input required min="0" max="99" type="number" class="form-control" id="activationCritique" name="activationCritique" th:field="${nouveauTypeArme.activationCritique}">
             </div>
 
             <!-- Bouton de soumission -->

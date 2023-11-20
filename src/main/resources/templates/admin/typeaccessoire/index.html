@@ -19,16 +19,13 @@
             <thead>
             <tr>
                 <th>Nom</th>
-                <th>Bonus</th>
-                <th>Couleur</th>
-                <th>Actions</th>
+                <th>Type Bonus</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="untypeaccessoire : ${typeaccessoire}">
                 <td th:text="${untypeaccessoire.nom}"></td>
-                <td th:text="${untypeaccessoire.bonusQualite}"></td>
-                <td th:text="${untypeaccessoire.couleur}"></td>
+                <td th:text="${untypeaccessoire.typebonusbonus}"></td>
                 <td class="d-flex">
                     <a th:href="@{'/admin/typeaccessoire/'+${untypeaccessoire.id}+'/edit'}" class="btn btn-warning">
                         Modifier

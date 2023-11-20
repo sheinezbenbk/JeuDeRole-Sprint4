@@ -18,17 +18,12 @@
                 <input required minlength="3" maxlength="255" type="text" class="form-control" id="nom" name="nom"  th:field="${nouveautypeaccessoire.nom}">
             </div>
 
-            <!-- Input pour la couleur du type d'accessoire -->
+            <!-- Input pour le type bonus du type d'accessoire -->
             <div class="mb-3">
-                <label for="couleur" class="form-label">Couleur du type d'accessoire</label>
-                <input required type="color" class="form-control" id="couleur" name="couleur"  th:field="${nouveautypeaccessoire.couleur}">
+                <label for="typebonus" class="form-label">Type bonus du type d'accessoire</label>
+                <input required type="text" class="form-control" id="typebonus" name="text"  th:field="${nouveautypeaccessoire.typebonus}">
             </div>
 
-            <!-- Input pour le bonus du type d'accessoire -->
-            <div class="mb-3">
-                <label for="bonusQualite" class="form-label">Bonus du type d'accessoire</label>
-                <input required min="0" max="99" type="number" class="form-control" id="bonusQualite" name="bonusQualite" th:field="${nouveautypeaccessoire.bonustypeaccessoire}">
-            </div>
 
             <!-- Bouton de soumission -->
             <button type="submit" class="btn btn-primary">Ajouter</button>

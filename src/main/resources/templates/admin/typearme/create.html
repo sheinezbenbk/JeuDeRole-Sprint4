@@ -10,24 +10,30 @@
 <main class="container">
     <div class="row col-10 col-sm-8 col-md-6 col-lg-4 mx-auto mt-3">
 
-        <form  th:action="@{/admin/qualite}" th:object="${nouvelleQualite}" method="post">
-            <h2 class="mb-4">Ajouter une Qualité</h2>
-            <!-- Input pour le nom de la qualité -->
+        <form  th:action="@{/admin/typearme}" th:object="${nouveauTypeArme}" method="post">
+            <h2 class="mb-4">Ajouter une Type d'Arme</h2>
+            <!-- Input pour le nom du type arme -->
             <div class="mb-3">
-                <label for="nom" class="form-label">Nom de la Qualité</label>
-                <input required minlength="3" maxlength="255" type="text" class="form-control" id="nom" name="nom"  th:field="${nouvelleQualite.nom}">
+                <label for="nom" class="form-label">Nom du type d'Arme</label>
+                <input required minlength="3" maxlength="255" type="text" class="form-control" id="nom" name="nom"  th:field="${nouveauTypeArme.nom}">
             </div>
 
-            <!-- Input pour la couleur de la qualité -->
+            <!-- Input pour le nombre de dés -->
             <div class="mb-3">
-                <label for="couleur" class="form-label">Couleur de la Qualité</label>
-                <input required type="color" class="form-control" id="couleur" name="couleur"  th:field="${nouvelleQualite.couleur}">
+                <label for="nombredes" class="form-label">Nombre de Dés du type d'arme</label>
+                <input required type="number" class="form-control" id="nombredes" name="nombreDes"  th:field="${nouveauTypeArme.nombreDes}">
             </div>
 
-            <!-- Input pour le bonus de la qualité -->
+            <!-- Input pour la Valeur du Dé max-->
             <div class="mb-3">
-                <label for="bonusQualite" class="form-label">Bonus de la Qualité</label>
-                <input required min="0" max="99" type="number" class="form-control" id="bonusQualite" name="bonusQualite" th:field="${nouvelleQualite.bonusQualite}">
+                <label for="valeurDéMax" class="form-label">La valeur du Dé maximum</label>
+                <input required min="0" max="99" type="number" class="form-control" id="valeurDéMax" name="bonusQualite" th:field="${nouveauTypeArme.nom}">
+            </div>
+
+            <!-- Input pour la Valeur du Dé max-->
+            <div class="mb-3">
+                <label for="multiplicateurCritique" class="form-label">La valeur du Dé maximum</label>
+                <input required min="0" max="99" type="number" class="form-control" id="multiplicateurCritique" name="bonusQualite" th:field="${nouveauTypeArme.bonusQualite}">
             </div>
 
             <!-- Bouton de soumission -->

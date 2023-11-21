@@ -88,7 +88,7 @@ class TypeArmeControlleur (val typeArmeDAO: TypeArmeDAO){
         model.addAttribute("typearme", leTypeArme)
 
         // Retourne le nom de la vue à afficher
-        return "admin/typearme/create"
+        return "admin/typearme/edit"
     }
     /**
      * Gère la soumission du formulaire de mise à jour de typeArme.

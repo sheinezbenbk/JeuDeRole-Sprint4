@@ -25,20 +25,20 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="uneQualite : ${qualites}">
-                <td th:text="${uneQualite.nom}"></td>
-                <td th:text="${uneQualite.bonusQualite}"></td>
-                <td th:text="${uneQualite.couleur}"></td>
+            <tr th:each="typearme : ${typearme}">
+                <td th:text="${typearme.nom}"></td>
+                <td th:text="${typearme.NombredeDe}"></td>
+                <td th:text="${typearme.ValeurDeMax}"></td>
                 <td class="d-flex">
-                    <a th:href="@{'/admin/qualite/'+${uneQualite.id}+'/edit'}" class="btn btn-warning">
+                    <a th:href="@{'/admin/typearme/'+${typearme.id}+'/edit'}" class="btn btn-warning">
                         Modifier
                     </a>
-                    <a th:href="@{'/admin/qualite/'+${uneQualite.id}}" class="btn btn-primary">
+                    <a th:href="@{'/admin/typearme/'+${typearme.id}}" class="btn btn-primary">
                         Consulter
                     </a>
                     <div>
-                        <form th:action="@{'/admin/qualite/delete'}" method="post">
-                            <input type="hidden" name="id" th:value="${uneQualite.id}">
+                        <form th:action="@{'/admin/typearme/delete'}" method="post">
+                            <input type="hidden" name="id" th:value="${typearme.id}">
                             <button class="btn btn-danger">Supprimer</button>
                         </form>
                     </div>

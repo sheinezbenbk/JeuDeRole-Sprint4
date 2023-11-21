@@ -19,25 +19,25 @@
 
             <!-- Input pour le nom du type d'arme -->
             <div class="mb-3">
-                <label for="nom" class="form-label">Nom de la Qualité</label>
+                <label for="nom" class="form-label">Nom du type d'arme</label>
                 <input required minlength="3" maxlength="255" type="text" class="form-control" id="nom" name="nom"  th:field="${typearme.nom}">
             </div>
 
             <!-- Input pour la nombreDes du type d'arme -->
             <div class="mb-3">
-                <label for="nombreDes" class="form-label">Couleur de la Qualité</label>
+                <label for="nombreDes" class="form-label">Nombre de Des</label>
                 <input required type="number" class="form-control" id="nombreDes" name="nombreDes"  th:field="${typearme.nombreDes}">
             </div>
 
             <!-- Input pour la valeure du De maximum du type d'arme -->
             <div class="mb-3">
-                <label for="multiplicateurCritique" class="form-label">Bonus de la Qualité</label>
+                <label for="multiplicateurCritique" class="form-label">Multiplicateur Critique</label>
                 <input required min="0" max="99" type="number" class="form-control" id="multiplicateurCritique" name="multiplicateurCritique" th:field="${typearme.multiplicateurCritique}">
             </div>
 
             <!-- Input pour le seuil critique du type d'arme -->
             <div class="mb-3">
-                <label for="activationCritique" class="form-label">Bonus de la Qualité</label>
+                <label for="activationCritique" class="form-label">Activation Critique</label>
                 <input required min="0" max="99" type="number" class="form-control" id="activationCritique" name="activationCritique" th:field="${typearme.activationCritique}">
             </div>
 

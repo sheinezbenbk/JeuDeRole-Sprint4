@@ -9,11 +9,11 @@
   <nav th:replace="mesFragments :: fragNav"></nav>
   <main class="container">
     <h1>Gestion des Type Armure</h1>
-    <div >
-      <a th:href="@{'/admin/typeArmureControlleur'}" class="btn btn-success">
+
+      <a th:href="@{'/admin/typearmure/create'}" class="btn btn-success">
         Ajouter un type armure
       </a>
-    </div>
+
     <table class="table table-striped">
       <thead>
       <tr>
@@ -24,8 +24,8 @@
       </thead>
       <tbody>
       <tr th:each="untypearmure : ${typeArmure}">
-        <td th:text="${typeArmure.nom}"></td>
-        <td th:text="${typeArmure.bonusType}"></td>
+        <td th:text="${untypearmure.nom}"></td>
+        <td th:text="${untypearmure.bonusType}"></td>
         <td class="d-flex">
           <a th:href="@{'/admin/typearmure/'+${untypearmure.id}+'/edit'}" class="btn btn-warning">
             Modifier
@@ -35,7 +35,7 @@
           </a>
           <div>
             <form th:action="@{'/admin/typearmure/delete'}" method="post">
-              <input type="hidden" name="id" th:value="${typeArmure.id}">
+              <input type="hidden" name="id" th:value="${untypearmure.id}">
               <button class="btn btn-danger">Supprimer</button>
             </form>
           </div>

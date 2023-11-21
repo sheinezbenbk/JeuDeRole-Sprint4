@@ -21,7 +21,7 @@ class TypeArmeControlleur (val typeArmeDAO: TypeArmeDAO){
         val typeArme= this.typeArmeDAO.findAll()
 
         // Ajoute la liste des types d'armes au modèle pour affichage dans la vue
-        model.addAttribute("typearme", typeArme)
+        model.addAttribute("typearmes", typeArme)
 
         // Retourne le nom de la vue à afficher
         return "admin/typearme/index"
@@ -70,7 +70,7 @@ class TypeArmeControlleur (val typeArmeDAO: TypeArmeDAO){
         // Ajoute un message de succès pour être affiché à la vue suivante
         redirectAttributes.addFlashAttribute("msgSuccess", "Enregistrement de ${savedTypeArme.nom} réussi")
         // Redirige vers la page d'administration des types d'Armes
-        return "redirect:/admin/typeArmeControlleur"
+        return "redirect:/admin/typearme"
     }
     /**
      * Affiche les détails d'un type d'arme en particulier pour ensuite le modifier.

@@ -2,7 +2,7 @@
 <html lang="fr">
 <head th:replace="mesFragments :: fragHead">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Typ arme</title>
 </head>
 <body>
 <div class="vh-100">
@@ -10,7 +10,7 @@
     <main class="container">
         <h1>Gestion des TypesArmes</h1>
         <div >
-            <a th:href="@{'/admin/TypeArmeControlleur'}" class="btn btn-success">
+            <a th:href="@{'/admin/typearme/create'}" class="btn btn-success">
                 Ajouter un TypeArme
             </a>
         </div>
@@ -25,10 +25,12 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="typearme : ${typearme}">
+            <tr th:each="typearme : ${typearmes}">
                 <td th:text="${typearme.nom}"></td>
-                <td th:text="${typearme.NombredeDe}"></td>
-                <td th:text="${typearme.ValeurDeMax}"></td>
+                <td th:text="${typearme.nombreDes}"></td>
+                <td th:text="${typearme.valeurDeMax}"></td>
+                <td th:text="${typearme.multiplicateurCritique}"></td>
+                <td th:text="${typearme.activationCritique}"></td>
                 <td class="d-flex">
                     <a th:href="@{'/admin/typearme/'+${typearme.id}+'/edit'}" class="btn btn-warning">
                         Modifier

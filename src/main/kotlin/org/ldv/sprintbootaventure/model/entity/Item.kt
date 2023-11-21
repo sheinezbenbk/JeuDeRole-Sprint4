@@ -1,4 +1,4 @@
-package org.ldv.sprintbootaventure.controller.admin
+package org.ldv.sprintbootaventure.model.entity
 import jakarta.persistence.*
 import org.ldv.sprintbootaventure.model.dao.QualiteDAO
 import org.springframework.data.jpa.repository.JpaRepository
@@ -7,7 +7,7 @@ import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.servlet.mvc.support.RedirectAttributes
 
-class Item {
+
 // Utilise l'héritage avec une seule table pour stocker les données de toutes les sous-classes dans la même table.
 // La colonne "discriminateur" est utilisée pour différencier les types d'objets stockés dans la table.
     @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -34,4 +34,3 @@ class Item {
 
     }
 
-}

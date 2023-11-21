@@ -112,6 +112,6 @@ class typeArmureControlleur (val typeArmureDAO: TypeArmureDAO){
         redirectAttributes.addFlashAttribute("msgSuccess", "Suppression de ${typeArmure.nom} réussie")
 
         // Redirige vers la page d'administration des qualités
-        return "redirect:/admin/TypeArmureControlleur"
+        return "redirect:/admin/typearmure"
     }
 }

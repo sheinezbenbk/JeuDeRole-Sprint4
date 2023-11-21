@@ -25,7 +25,7 @@
             <tbody>
             <tr th:each="untypeaccessoire : ${typeaccessoire}">
                 <td th:text="${untypeaccessoire.nom}"></td>
-                <td th:text="${untypeaccessoire.typebonusbonus}"></td>
+                <td th:text="${untypeaccessoire.typebonus}"></td>
                 <td class="d-flex">
                     <a th:href="@{'/admin/typeaccessoire/'+${untypeaccessoire.id}+'/edit'}" class="btn btn-warning">
                         Modifier

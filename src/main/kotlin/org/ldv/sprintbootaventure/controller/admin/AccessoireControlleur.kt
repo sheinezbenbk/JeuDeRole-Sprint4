@@ -1,7 +1,7 @@
 package org.ldv.springbootaventure.controller.admin
 
 
-import org.ldv.springbootaventure.model.dao.AccessoireDao
+import org.ldv.springbootaventure.model.dao.AccessoireDAO
 import org.ldv.springbootaventure.model.entity.Accessoire
 import org.ldv.sprintbootaventure.model.dao.QualiteDAO
 import org.ldv.sprintbootaventure.model.dao.TypeAccessoireDAO
@@ -24,30 +24,30 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes
  */
 
 @Controller
-class AccessoireControlleur (val accessoireDao: AccessoireDao, val qualiteDao: QualiteDAO, val typeAccessoireDao: TypeAccessoireDAO) {
+class AccessoireControlleur (val accessoireDao: AccessoireDAO, val qualiteDao: QualiteDAO, val typeaccessoireDao: TypeAccessoireDAO) {
 
-    @GetMapping("/admin/Accessoire")
+    @GetMapping("/admin/accessoire")
     fun index(model : Model): String {
         // Récupère toutes les qualités depuis la base de données
-        val Accessoires = this.accessoireDao.findAll()
+        val accessoires = this.accessoireDao.findAll()
 
         // Ajoute la liste des qualités au modèle pour affichage dans la vue
-        model.addAttribute("Accessoires", Accessoires)
+        model.addAttribute("accessoires", accessoires)
 
         // Retourne le nom de la vue à afficher
-        return "admin/Accessoire/index"
+        return "admin/accessoire/index"
     }
 
-    @GetMapping("/admin/Accessoire/{id}")
+    @GetMapping("/admin/accessoire/{id}")
     fun show(@PathVariable id: Long, model: Model): String {
         // Récupère la qualité avec l'ID spécifié depuis la base de données
-        val uneAccessoire = this.accessoireDao.findById(id).orElseThrow()
+        val uneaccessoire = this.accessoireDao.findById(id).orElseThrow()
 
         // Ajoute la qualité au modèle pour affichage dans la vue
-        model.addAttribute("Accessoire", uneAccessoire)
+        model.addAttribute("accessoire", uneaccessoire)
 
         // Retourne le nom de la vue à afficher
-        return "admin/Accessoire/show"
+        return "admin/accessoire/show"
     }
 
     /**
@@ -56,79 +56,80 @@ class AccessoireControlleur (val accessoireDao: AccessoireDao, val qualiteDao: Q
      * @param model Le modèle utilisé pour transmettre les données à la vue.
      * @return Le nom de la vue à afficher (le formulaire de création).
      */
-    @GetMapping("/admin/Accessoire/create")
+    @GetMapping("/admin/accessoire/create")
     fun create(model: Model): String {
-        // Crée une nouvelle instance de Accessoire avec des valeurs par défaut
-        val nouvelleAccessoire = Accessoire(null, "", "","")
+        // Crée une nouvelle instance de accessoire avec des valeurs par défaut
+        val nouvelleaccessoire = Accessoire(null, "", "","")
         val qualites = qualiteDao.findAll()
         model.addAttribute("qualites",qualites)
-        val typeAccessoires = typeAccessoireDao.findAll()
-        model.addAttribute("typeAccessoires",typeAccessoires)
+        val typeaccessoires = typeaccessoireDao.findAll()
+        model.addAttribute("typeaccessoires",typeaccessoires)
 
 
         // Ajoute la nouvelle qualité au modèle pour affichage dans le formulaire de création
-        model.addAttribute("nouvelleAccessoire", nouvelleAccessoire)
+        model.addAttribute("nouvelleaccessoire", nouvelleaccessoire)
 
         // Retourne le nom de la vue à afficher (le formulaire de création)
-        return "admin/Accessoire/create"
+        return "admin/accessoire/create"
     }
 
-    @PostMapping("/admin/Accessoire")
-    fun store(@ModelAttribute nouvelleAccessoire: Accessoire, redirectAttributes: RedirectAttributes): String {
+    @PostMapping("/admin/accessoire")
+    fun store(@ModelAttribute nouvelleaccessoire: Accessoire, redirectAttributes: RedirectAttributes): String {
         // Sauvegarde la nouvelle qualité dans la base de données
-        val savedAccessoire = this.accessoireDao.save(nouvelleAccessoire)
+        val savedaccessoire = this.accessoireDao.save(nouvelleaccessoire)
         // Ajoute un message de succès pour être affiché à la vue suivante
-        redirectAttributes.addFlashAttribute("msgSuccess", "Enregistrement de ${savedAccessoire.id} réussi")
+        redirectAttributes.addFlashAttribute("msgSuccess", "Enregistrement de ${savedaccessoire.id} réussi")
         // Redirige vers la page d'administration des qualités
-        return "redirect:/admin/Accessoire"
+        return "redirect:/admin/accessoire"
     }
 
-    @GetMapping("/admin/Accessoire/{id}/edit")
+    @GetMapping("/admin/accessoire/{id}/edit")
     fun edit(@PathVariable id: Long, model: Model): String {
         // Récupère la qualité avec l'ID spécifié depuis la base de données
-        val uneAccessoire = this.accessoireDao.findById(id).orElseThrow()
+        val uneaccessoire = this.accessoireDao.findById(id).orElseThrow()
 
         // Ajoute la qualité au modèle pour affichage dans la vue
-        model.addAttribute("Accessoire", uneAccessoire)
+        model.addAttribute("accessoire", uneaccessoire)
 
         val qualites = qualiteDao.findAll()
         model.addAttribute("qualites",qualites)
-        val typeAccessoires = typeAccessoireDao.findAll()
-        model.addAttribute("typeAccessoires",typeAccessoires)
+        val typeaccessoires = typeaccessoireDao.findAll()
+        model.addAttribute("typeaccessoires",typeaccessoires)
 
         // Retourne le nom de la vue à afficher
-        return "admin/Accessoire/edit"
+        return "admin/accessoire/edit"
     }
 
     /**
      * Gère la soumission du formulaire de mise à jour de qualité.
      *
-     * @param Accessoire L'objet Accessoire mis à jour à partir des données du formulaire.
+     * @param accessoire L'objet accessoire mis à jour à partir des données du formulaire.
      * @param redirectAttributes Les attributs de redirection pour transmettre des messages à la vue suivante.
      * @return La redirection vers la page d'administration des qualités après la mise à jour réussie.
      * @throws NoSuchElementException si la qualité avec l'ID spécifié n'est pas trouvée dans la base de données.
      */
-    @PostMapping("/admin/Accessoire/update")
-    fun update(@ModelAttribute Accessoire: Accessoire, redirectAttributes: RedirectAttributes): String {
+    @PostMapping("/admin/accessoire/update")
+    fun update(@ModelAttribute accessoire: Accessoire, redirectAttributes: RedirectAttributes): String {
         // Recherche de la qualité existante dans la base de données
-        val accessoireModifier = this.accessoireDao.findById(Accessoire.id ?: 0).orElseThrow()
+        val accessoireModifier = this.accessoireDao.findById(accessoire.id ?: 0).orElseThrow()
 
         // Mise à jour des propriétés de la qualité avec les nouvelles valeurs du formulaire
-        accessoireModifier.nom = Accessoire.nom
-        accessoireModifier.description = Accessoire.description
-        accessoireModifier.cheminImage = Accessoire.cheminImage
-        accessoireModifier.typeAccessoire = Accessoire.typeAccessoire
-        accessoireModifier.qualite = Accessoire.qualite
+        accessoireModifier.nom = accessoire.nom
+        accessoireModifier.description = accessoire.description
+        accessoireModifier.cheminImage = accessoire.cheminImage
+        accessoireModifier.qualite = accessoire.qualite
+        accessoireModifier.typeAccessoire = accessoire.typeAccessoire
+
 
 
         // Sauvegarde la qualité modifiée dans la base de données
-        val savedAccessoire = this.accessoireDao.save(accessoireModifier)
+        val savedaccessoire = this.accessoireDao.save(accessoireModifier)
 
         // Ajoute un message de succès pour être affiché à la vue suivante
-        redirectAttributes.addFlashAttribute("msgSuccess", "Modification de ${savedAccessoire.nom} réussie")
+        redirectAttributes.addFlashAttribute("msgSuccess", "Modification de ${savedaccessoire.nom} réussie")
 
         // Redirige vers la page d'administration des qualités
-        return "redirect:/admin/Accessoire"
+        return "redirect:/admin/accessoire"
     }
 
     /**
@@ -139,7 +140,7 @@ class AccessoireControlleur (val accessoireDao: AccessoireDao, val qualiteDao: Q
      * @return La redirection vers la page d'administration des qualités après la suppression réussie.
      * @throws NoSuchElementException si la qualité avec l'ID spécifié n'est pas trouvée dans la base de données.
      */
-    @PostMapping("/admin/Accessoire/delete")
+    @PostMapping("/admin/accessoire/delete")
     fun delete(@RequestParam id: Long, redirectAttributes: RedirectAttributes): String {
         // Recherche de la qualité à supprimer dans la base de données
         val accessoire: Accessoire = this.accessoireDao.findById(id).orElseThrow()
@@ -151,7 +152,7 @@ class AccessoireControlleur (val accessoireDao: AccessoireDao, val qualiteDao: Q
         redirectAttributes.addFlashAttribute("msgSuccess", "Suppression de ${accessoire.nom} réussie")
 
         // Redirige vers la page d'administration des qualités
-        return "redirect:/admin/Accessoire"
+        return "redirect:/admin/accessoire"
     }
 
 

@@ -4,8 +4,8 @@ package org.ldv.springbootaventure.controller.admin
 import org.ldv.springbootaventure.model.dao.*
 import org.ldv.springbootaventure.model.entity.Armure
 
-import org.ldv.sprintbootaventure.model.dao.ArmureDAO
 import org.ldv.sprintbootaventure.model.dao.QualiteDAO
+import org.ldv.sprintbootaventure.model.dao.TypeArmureDAO
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
@@ -30,13 +30,13 @@ class ArmureControlleur (val armureDao: ArmureDAO, val qualiteDao: QualiteDAO, v
     @GetMapping("/admin/Armure")
     fun index(model : Model): String {
         // Récupère toutes les qualités depuis la base de données
-        val Armures = this.armureDao.findAll()
+        val armure = this.armureDao.findAll()
 
         // Ajoute la liste des qualités au modèle pour affichage dans la vue
-        model.addAttribute("Armures", Armures)
+        model.addAttribute("Armures", armure)
 
         // Retourne le nom de la vue à afficher
-        return "admin/Armure/index"
+        return "admin/armure/index"
     }
 
     @GetMapping("/admin/Armure/{id}")
@@ -48,7 +48,7 @@ class ArmureControlleur (val armureDao: ArmureDAO, val qualiteDao: QualiteDAO, v
         model.addAttribute("Armure", uneArmure)
 
         // Retourne le nom de la vue à afficher
-        return "admin/Armure/show"
+        return "admin/armure/show"
     }
 
     /**
@@ -71,7 +71,7 @@ class ArmureControlleur (val armureDao: ArmureDAO, val qualiteDao: QualiteDAO, v
         model.addAttribute("nouvelleArmure", nouvelleArmure)
 
         // Retourne le nom de la vue à afficher (le formulaire de création)
-        return "admin/Armure/create"
+        return "admin/armure/create"
     }
 
     @PostMapping("/admin/Armure")
@@ -98,7 +98,7 @@ class ArmureControlleur (val armureDao: ArmureDAO, val qualiteDao: QualiteDAO, v
         model.addAttribute("typeArmures",typeArmures)
 
         // Retourne le nom de la vue à afficher
-        return "admin/Armure/edit"
+        return "admin/armure/edit"
     }
 
     /**
@@ -110,16 +110,16 @@ class ArmureControlleur (val armureDao: ArmureDAO, val qualiteDao: QualiteDAO, v
      * @throws NoSuchElementException si la qualité avec l'ID spécifié n'est pas trouvée dans la base de données.
      */
     @PostMapping("/admin/Armure/update")
-    fun update(@ModelAttribute Armure: Armure, redirectAttributes: RedirectAttributes): String {
+    fun update(@ModelAttribute armure: Armure, redirectAttributes: RedirectAttributes): String {
         // Recherche de la qualité existante dans la base de données
-        val armureModifier = this.armureDao.findById(Armure.id ?: 0).orElseThrow()
+        val armureModifier = this.armureDao.findById(armure.id ?: 0).orElseThrow()
 
         // Mise à jour des propriétés de la qualité avec les nouvelles valeurs du formulaire
-        armureModifier.nom = Armure.nom
-        armureModifier.description = Armure.description
-        armureModifier.cheminImage = Armure.cheminImage
-        armureModifier.typeArmure = Armure.typeArmure
-        armureModifier.qualite = Armure.qualite
+        armureModifier.nom = armure.nom
+        armureModifier.description = armure.description
+        armureModifier.cheminImage = armure.cheminImage
+        armureModifier.typeArmure = armure.typeArmure
+        armureModifier.qualite = armure.qualite
 
 
         // Sauvegarde la qualité modifiée dans la base de données
@@ -143,13 +143,13 @@ class ArmureControlleur (val armureDao: ArmureDAO, val qualiteDao: QualiteDAO, v
     @PostMapping("/admin/Armure/delete")
     fun delete(@RequestParam id: Long, redirectAttributes: RedirectAttributes): String {
         // Recherche de la qualité à supprimer dans la base de données
-        val Armure: Armure = this.armureDao.findById(id).orElseThrow()
+        val armure: Armure = this.armureDao.findById(id).orElseThrow()
 
         // Suppression de la qualité de la base de données
-        this.armureDao.delete(Armure)
+        this.armureDao.delete(armure)
 
         // Ajoute un message de succès pour être affiché à la vue suivante
-        redirectAttributes.addFlashAttribute("msgSuccess", "Suppression de ${Armure.nom} réussie")
+        redirectAttributes.addFlashAttribute("msgSuccess", "Suppression de ${armure.nom} réussie")
 
         // Redirige vers la page d'administration des qualités
         return "redirect:/admin/Armure"

@@ -2,7 +2,7 @@ package org.ldv.springbootaventure.controller.admin
 
 
 import org.ldv.springbootaventure.model.dao.ArmeDAO
-import org.ldv.springbootaventure.model.entity.Arme
+import org.ldv.sprintbootaventure.model.entity.Arme
 import org.ldv.sprintbootaventure.model.dao.QualiteDAO
 import org.ldv.sprintbootaventure.model.dao.TypeArmeDAO
 import org.springframework.stereotype.Controller

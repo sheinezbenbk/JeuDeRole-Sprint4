@@ -1,4 +1,4 @@
-package org.ldv.springbootaventure.model.entity
+package org.ldv.sprintbootaventure.model.entity
 
 import jakarta.persistence.DiscriminatorValue
 import jakarta.persistence.Entity
@@ -16,7 +16,7 @@ class Accessoire constructor(
     description: String,
     cheminImage: String?,
 //TODO Attributs spécifiques aux accessoires
-    //Association entre org.ldv.springbootaventure.model.entity.Accessoire et Qualite
+    //Association entre org.ldv.sprintbootaventure.model.entity.Accessoire et Qualite
     //Plusieurs armes peuvent être rataché a une qualite
     @ManyToOne
     @JoinColumn(name = "qualite_id")
@@ -26,6 +26,4 @@ class Accessoire constructor(
     @JoinColumn(name = "type_accessoire_id")
     var typeAccessoire : TypeAccessoire? = null
 ) : Item(id, nom, description, cheminImage) {
-
-
 }

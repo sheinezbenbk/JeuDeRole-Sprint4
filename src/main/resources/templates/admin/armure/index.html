@@ -8,34 +8,40 @@
 <div class="vh-100">
   <nav th:replace="mesFragments :: fragNav"></nav>
   <main class="container">
-    <h1>Gestion des Type Armure</h1>
+    <h1>Gestion des Armure</h1>
 
-      <a th:href="@{'/admin/typearmure/create'}" class="btn btn-success">
-        Ajouter un type armure
+      <a th:href="@{'/admin/armure/create'}" class="btn btn-success">
+        Ajouter une armure
       </a>
 
     <table class="table table-striped">
       <thead>
       <tr>
         <th>Nom</th>
-        <th>Bonus Type</th>
+        <th>Description</th>
+        <th>Chemin de l'image</th>
+        <th>Qualité</th>
+        <th>Type d'Armure</th>
 
       </tr>
       </thead>
       <tbody>
-      <tr th:each="untypearmure : ${typeArmure}">
-        <td th:text="${untypearmure.nom}"></td>
-        <td th:text="${untypearmure.bonusType}"></td>
+      <tr th:each="armure : ${Armures}">
+        <td th:text="${armure.nom}"></td>
+        <td th:text="${armure.description}"></td>
+        <td th:text="${armure.cheminImage}"></td>
+        <td th:text="${armure.qualite}"></td>
+        <td th:text="${armure.typeArmure}"></td>
         <td class="d-flex">
-          <a th:href="@{'/admin/typearmure/'+${untypearmure.id}+'/edit'}" class="btn btn-warning">
+          <a th:href="@{'/admin/armure/'+${armure.id}+'/edit'}" class="btn btn-warning">
             Modifier
           </a>
-          <a th:href="@{'/admin/typearmure/'+${untypearmure.id}}" class="btn btn-primary">
+          <a th:href="@{'/admin/armure/'+${armure.id}}" class="btn btn-primary">
             Consulter
           </a>
           <div>
-            <form th:action="@{'/admin/typearmure/delete'}" method="post">
-              <input type="hidden" name="id" th:value="${untypearmure.id}">
+            <form th:action="@{'/admin/armure/delete'}" method="post">
+              <input type="hidden" name="id" th:value="${armure.id}">
               <button class="btn btn-danger">Supprimer</button>
             </form>
           </div>

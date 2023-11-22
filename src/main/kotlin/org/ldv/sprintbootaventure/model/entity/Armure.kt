@@ -16,7 +16,7 @@ class Armure constructor(
     description: String,
     cheminImage: String?,
 //TODO Attributs spécifiques aux armes
-    //Association entre org.ldv.springbootaventure.model.entity.Arme et Qualite
+    //Association entre org.ldv.sprintbootaventure.model.entity.Arme et Qualite
     //Plusieurs armes peuvent être rataché a une qualite
     @ManyToOne
     @JoinColumn(name = "qualite_id")
@@ -26,6 +26,4 @@ class Armure constructor(
     @JoinColumn(name = "type_armure_id")
     var typeArmure: TypeArmure? = null
 ) : Item(id, nom, description, cheminImage) {
-
-
 }

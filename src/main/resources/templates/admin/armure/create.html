@@ -15,18 +15,24 @@
             <!-- Input pour le nom du type armure -->
             <div class="mb-3">
                 <label for="nom" class="form-label">Nom du type armure</label>
-                <input required minlength="3" maxlength="255" type="text" class="form-control" id="nom" name="nom"  th:field="${nouveautypearmure.nom}">
+                <input required minlength="3" maxlength="255" type="text" class="form-control" id="nom" name="nom"  th:field="${nouvellearmure.nom}">
             </div>
 
 
             <!-- Input pour le bonus type du type armure -->
             <div class="mb-3">
                 <label for="bonusType" class="form-label">Bonus type armure</label>
-                <input required min="0" max="99" type="number" class="form-control" id="bonusType" name="bonusType" th:field="${nouveautypearmure.bonusType}">
+                <input required min="0" max="99" type="number" class="form-control" id="bonusType" name="bonusType" th:field="${nouvellearmure.bonusType}">
+            </div>
+
+            <!-- Input pour le chemin d'image du type d'armure  -->
+            <div class="mb-3">
+                <label for="cheminImage" class="form-label">Type bonus du type d'armure</label>
+                <input required type="text" class="form-control" id="cheminImage" name="cheminImage"  th:field="${nouvellearmure.cheminImage}">
             </div>
 
             <!-- Bouton de soumission -->
-            <button type="submit" class="btn btn-primary">Ajouter</button>
+            <button type="submit" class="btn btn-primary">Ajouter l'Armure</button>
         </form>
     </div>
 </main>

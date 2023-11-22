@@ -1,4 +1,4 @@
-package org.ldv.springbootaventure.model.entity
+package org.ldv.sprintbootaventure.model.entity
 
 import jakarta.persistence.DiscriminatorValue
 import jakarta.persistence.Entity
@@ -10,13 +10,13 @@ import org.ldv.sprintbootaventure.model.entity.TypeArme
 
 @Entity
 @DiscriminatorValue("arme")
-class Arme constructor(
+class Arme (
     id: Long? = null,
     nom: String,
     description: String,
     cheminImage: String?,
 //TODO Attributs spécifiques aux armes
-    //Association entre org.ldv.springbootaventure.model.entity.Arme et Qualite
+    //Association entre org.ldv.sprintbootaventure.model.entity.Arme et Qualite
     //Plusieurs armes peuvent être rataché a une qualite
     @ManyToOne
     @JoinColumn(name = "qualite_id")
@@ -25,7 +25,5 @@ class Arme constructor(
     @ManyToOne
     @JoinColumn(name = "type_arme_id")
     var typeArme: TypeArme? = null
-) : Item(id, nom, description, cheminImage) {
-
-
+) : Item(id, nom, description, cheminImage){
 }

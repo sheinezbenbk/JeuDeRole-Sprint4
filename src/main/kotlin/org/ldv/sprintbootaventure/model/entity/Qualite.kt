@@ -1,6 +1,6 @@
 package org.ldv.sprintbootaventure.controller.admin
 import jakarta.persistence.*
-import org.ldv.springbootaventure.model.entity.Arme
+import org.ldv.sprintbootaventure.model.entity.Arme
 
 
 @Entity

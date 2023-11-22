@@ -8,10 +8,14 @@
 <div class="vh-100">
 <nav th:replace="mesFragments :: fragNav"></nav>
 <main class="container">
-    <h1  th:text="'Nom: '+${typearmure.nom}"></h1>
+    <h1  th:text="'Nom: '+${Armure.nom}"></h1>
     <ul>
-        <li th:text="'Nom : '+ ${typearmure.nom}"></li>
-        <li th:text="'Bonustype : '+${typearmure.bonusType}"></li>
+        <li th:text="'Nom : '+ ${Armure.nom}"></li>
+        <li th:text="'Bonustype : '+${Armure.bonusType}"></li>
+        <li th:text="'CheminImage : '+${Armure.cheminImage}"></li>
+        <li th:text="'qualite : '+${Armure.qualite}"></li>
+        <li th:text="'Type accessoire : '+ ${Armure.typeArmure}"></li>
+
     </ul>
 </main>
 </div>

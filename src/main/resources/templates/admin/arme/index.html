@@ -10,7 +10,7 @@
     <main class="container">
         <h1>Gestion des Armes</h1>
         <div >
-            <a th:href="@{'/admin/Arme/create'}" class="btn btn-success">
+            <a th:href="@{'/admin/arme/create'}" class="btn btn-success">
                 Ajouter une Arme
             </a>
         </div>
@@ -19,21 +19,27 @@
             <tr>
                 <th>Nom</th>
                 <th>Description </th>
+                <th>Chemin de l'image </th>
+                <th>Qualité </th>
+                <th>Type d'amre </th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="Arme : ${Armes}">
                 <td th:text="${Arme.nom}"></td>
                 <td th:text="${Arme.description}"></td>
+                <td th:text="${Arme.cheminImage}"></td>
+                <td th:text="${Arme.qualite}"></td>
+                <td th:text="${Arme.typeArme}"></td>
                 <td class="d-flex">
-                    <a th:href="@{'/admin/Arme/'+${Arme.id}+'/edit'}" class="btn btn-warning">
+                    <a th:href="@{'/admin/arme/'+${Arme.id}+'/edit'}" class="btn btn-warning">
                         Modifier
                     </a>
-                    <a th:href="@{'/admin/Arme/'+${Arme.id}}" class="btn btn-primary">
+                    <a th:href="@{'/admin/arme/'+${Arme.id}}" class="btn btn-primary">
                         Consulter
                     </a>
                     <div>
-                        <form th:action="@{'/admin/Arme/delete'}" method="post">
+                        <form th:action="@{'/admin/arme/delete'}" method="post">
                             <input type="hidden" name="id" th:value="${Arme.id}">
                             <button class="btn btn-danger">Supprimer</button>
                         </form>

@@ -1,17 +1,14 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Arme</title>
 </head>
 <body>
 <main class="container">
     <div class="row col-10 col-sm-8 col-md-6 col-lg-4 mx-auto mt-3">
 
-        <form novalidate class="validation"  th:action="@{/admin/Arme/update}" th:object="${Arme}" method="post">
+        <form novalidate class="validation"  th:action="@{/admin/arme/update}" th:object="${Arme}" method="post">
             <h2 class="mb-4">Modification d'une Arme</h2>
 
             <!-- Input pour l'id du type d'arme -->
@@ -27,6 +24,24 @@
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <input required type="number" class="form-control" id="description" name="description"  th:field="${Arme.description}">
+            </div>
+
+            <!-- Input pour le chemin de l'image l'Arme -->
+            <div class="mb-3">
+                <label for="cheminImage" class="form-label">Description</label>
+                <input required type="number" class="form-control" id="cheminImage" name="cheminImage"  th:field="${Arme.cheminImage}">
+            </div>
+
+            <!-- Input pour la Qualité de l'Arme -->
+            <div class="mb-3">
+                <label for="qualite" class="form-label">Description</label>
+                <input required type="number" class="form-control" id="qualite" name="qualite"  th:field="${Arme.qualite}">
+            </div>
+
+            <!-- Input pour le type d'arme de l'Arme -->
+            <div class="mb-3">
+                <label for="typeArme" class="form-label">Type d'Arme</label>
+                <input required type="number" class="form-control" id="typeArme" name="typeArme"  th:field="${Arme.typeArme}">
             </div>
 
 

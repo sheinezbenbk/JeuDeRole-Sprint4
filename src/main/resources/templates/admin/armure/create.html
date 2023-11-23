@@ -10,23 +10,41 @@
 <main class="container">
     <div class="row col-10 col-sm-8 col-md-6 col-lg-4 mx-auto mt-3">
 
-        <form  th:action="@{/admin/typearmure}" th:object="${nouveautypearmure}" method="post">
+        <form  th:action="@{/admin/armure}" th:object="${nouvelleArmure}" method="post">
             <h2 class="mb-4">Ajouter un type armure</h2>
             <!-- Input pour le nom du type armure -->
             <div class="mb-3">
                 <label for="nom" class="form-label">Nom du type armure</label>
-                <input required minlength="3" maxlength="255" type="text" class="form-control" id="nom" name="nom"  th:field="${nouveautypearmure.nom}">
+                <input required minlength="3" maxlength="255" type="text" class="form-control" id="nom" name="nom"  th:field="${nouvelleArmure.nom}">
             </div>
 
 
-            <!-- Input pour le bonus type du type armure -->
+            <!-- Input pour la description -->
             <div class="mb-3">
-                <label for="bonusType" class="form-label">Bonus type armure</label>
-                <input required min="0" max="99" type="number" class="form-control" id="bonusType" name="bonusType" th:field="${nouveautypearmure.bonusType}">
+                <label for="description" class="form-label">Description de l'armure</label>
+                <input required type="text" class="form-control" id="description" name="description"  th:field="${nouvelleArmure.description}">
+            </div>
+
+            <!-- Input pour le chemin de l'image -->
+            <div class="mb-3">
+                <label for="cheminImage" class="form-label">Chemin de l'image de l'armure</label>
+                <input required type="text" class="form-control" id="cheminImage" name="cheminImage"  th:field="${nouvelleArmure.cheminImage}">
+            </div>
+
+            <!-- Input pour la qualite de l'armure -->
+            <div class="mb-3">
+                <label for="qualite" class="form-label">Qualité de l'armure</label>
+                <input required type="text" class="form-control" id="qualite" name="qualite"  th:field="${nouvelleArmure.qualite}">
+            </div>
+
+            <!-- Input pour le type d'armure de l'armure -->
+            <div class="mb-3">
+                <label for="typeArmure" class="form-label">Le type d'armure de l'armure</label>
+                <input required type="text" class="form-control" id="typeArmure" name="typeArmure"  th:field="${nouvelleArmure.typeArmure}">
             </div>
 
             <!-- Bouton de soumission -->
-            <button type="submit" class="btn btn-primary">Ajouter</button>
+            <button type="submit" class="btn btn-primary">Ajouter l'Armure</button>
         </form>
     </div>
 </main>

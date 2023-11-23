@@ -18,8 +18,17 @@
     <header class="d-flex justify-content-center py-3">
         <ul class="nav nav-pills">
             <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Acceuil</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Classes</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Qualité</a></li>
+            <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Classes
+                </a>
+
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/admin/qualite"> Qualite</a></li>
+                    <li><a class="dropdown-item" href="/admin/accessoire"> Accessoire </a></li>
+                    <li><a class="dropdown-item" href="/admin/arme">Armes</a></li>
+                </ul>
+            </div>
             <li class="nav-item"><a href="#" class="nav-link">Se connecter</a></li>
             <li class="nav-item"><a href="#" class="nav-link">Inscription</a></li>
         </ul>

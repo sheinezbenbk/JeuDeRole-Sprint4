@@ -1,6 +1,6 @@
 package org.ldv.sprintbootaventure.controller.admin
-import jakarta.persistence.*
 import org.ldv.sprintbootaventure.model.dao.QualiteDAO
+import org.ldv.sprintbootaventure.model.entity.Qualite
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.*

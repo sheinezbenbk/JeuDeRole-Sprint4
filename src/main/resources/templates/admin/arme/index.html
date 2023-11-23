@@ -2,45 +2,45 @@
 <html lang="fr">
 <head th:replace="mesFragments :: fragHead">
     <meta charset="UTF-8">
-    <title>Typ arme</title>
+    <title>Armes</title>
 </head>
 <body>
 <div class="vh-100">
     <nav th:replace="mesFragments :: fragNav"></nav>
     <main class="container">
-        <h1>Gestion des TypesArmes</h1>
+        <h1>Gestion des Armes</h1>
         <div >
-            <a th:href="@{'/admin/typearme/create'}" class="btn btn-success">
-                Ajouter un TypeArme
+            <a th:href="@{'/admin/arme/create'}" class="btn btn-success">
+                Ajouter une Arme
             </a>
         </div>
         <table class="table table-striped">
             <thead>
             <tr>
                 <th>Nom</th>
-                <th>Nombre de Dé</th>
-                <th>Valeur Dé Max </th>
-                <th>multiplicateur Critique</th>
-                <th>activation Critique</th>
+                <th>Description </th>
+                <th>Chemin de l'image </th>
+                <th>Qualité </th>
+                <th>Type d'amre </th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="typearme : ${typearmes}">
-                <td th:text="${typearme.nom}"></td>
-                <td th:text="${typearme.nombreDes}"></td>
-                <td th:text="${typearme.valeurDeMax}"></td>
-                <td th:text="${typearme.multiplicateurCritique}"></td>
-                <td th:text="${typearme.activationCritique}"></td>
+            <tr th:each="Arme : ${Armes}">
+                <td th:text="${Arme.nom}"></td>
+                <td th:text="${Arme.description}"></td>
+                <td th:text="${Arme.cheminImage}"></td>
+                <td th:text="${Arme.qualite}"></td>
+                <td th:text="${Arme.typeArme}"></td>
                 <td class="d-flex">
-                    <a th:href="@{'/admin/typearme/'+${typearme.id}+'/edit'}" class="btn btn-warning">
+                    <a th:href="@{'/admin/arme/'+${Arme.id}+'/edit'}" class="btn btn-warning">
                         Modifier
                     </a>
-                    <a th:href="@{'/admin/typearme/'+${typearme.id}}" class="btn btn-primary">
+                    <a th:href="@{'/admin/arme/'+${Arme.id}}" class="btn btn-primary">
                         Consulter
                     </a>
                     <div>
-                        <form th:action="@{'/admin/typearme/delete'}" method="post">
-                            <input type="hidden" name="id" th:value="${typearme.id}">
+                        <form th:action="@{'/admin/arme/delete'}" method="post">
+                            <input type="hidden" name="id" th:value="${Arme.id}">
                             <button class="btn btn-danger">Supprimer</button>
                         </form>
                     </div>

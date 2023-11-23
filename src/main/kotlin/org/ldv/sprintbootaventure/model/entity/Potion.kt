@@ -1,4 +1,4 @@
-package org.ldv.springbootaventure.model.entity
+package org.ldv.sprintbootaventure.model.entity
 
 import jakarta.persistence.DiscriminatorValue
 import jakarta.persistence.Entity

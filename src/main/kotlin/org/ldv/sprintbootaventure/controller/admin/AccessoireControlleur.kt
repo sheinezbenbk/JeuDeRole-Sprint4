@@ -1,8 +1,8 @@
-package org.ldv.springbootaventure.controller.admin
+package org.ldv.sprintbootaventure.controller.admin
 
 
-import org.ldv.springbootaventure.model.dao.AccessoireDAO
-import org.ldv.springbootaventure.model.entity.Accessoire
+import org.ldv.sprintbootaventure.model.dao.AccessoireDAO
+import org.ldv.sprintbootaventure.model.entity.Accessoire
 import org.ldv.sprintbootaventure.model.dao.QualiteDAO
 import org.ldv.sprintbootaventure.model.dao.TypeAccessoireDAO
 import org.springframework.stereotype.Controller
@@ -17,8 +17,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes
 /**
  * Affiche les détails d'une qualité en particulier.
  *
- * @param id L'identifiant unique de la qualité à afficher.
- * @param model Le modèle utilisé pour transmettre les données à la vue.
+ * @param_id L'identifiant unique de la qualité à afficher.
+ * @param_model Le modèle utilisé pour transmettre les données à la vue.
  * @return Le nom de la vue à afficher.
  * @throws NoSuchElementException si la qualité avec l'ID spécifié n'est pas trouvée.
  */

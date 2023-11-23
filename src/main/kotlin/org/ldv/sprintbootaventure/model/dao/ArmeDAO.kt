@@ -1,6 +1,6 @@
-package org.ldv.springbootaventure.model.dao
+package org.ldv.sprintbootaventure.model.dao
 
-import org.ldv.springbootaventure.model.entity.Arme
+import org.ldv.sprintbootaventure.model.entity.Arme
 import org.springframework.data.jpa.repository.JpaRepository
 
 

@@ -7,7 +7,7 @@ import jakarta.persistence.Entity
 class LigneInventaire (
 
     @EmbeddedId
-    var 
+    var
 
 ) {
 }

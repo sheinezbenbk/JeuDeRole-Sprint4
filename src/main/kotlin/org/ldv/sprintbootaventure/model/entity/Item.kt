@@ -23,9 +23,13 @@ import jakarta.persistence.*
 // Description de l'item
         var description: String,
 //Chemin vers l'image de l'item
-        var cheminImage:String?
+        var cheminImage:String?,
+
+    @OneToMany(mappedBy = "item")
+    val ligneInventaire: List<LigneInventaire> = mutableListOf()
     ) {
 // TODO sprint 5: methode utiliser
+
 
     }
 

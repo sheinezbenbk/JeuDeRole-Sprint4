@@ -16,7 +16,12 @@ class Personnage constructor (
     val defense : Int,
     val endurance : Int,
     val vitesse : Int,
-    val cheminImage : String)
+    val cheminImage : String,
+
+@OneToMany (mappedBy = "personnage")
+val ligneInventaire: List<LigneInventaire> = mutableListOf()
+
+)
 {
 
 //    open fun attaque(adversaire: Personnage) {

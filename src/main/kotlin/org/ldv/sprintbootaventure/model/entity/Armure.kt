@@ -26,6 +26,4 @@ class Armure constructor(
     @JoinColumn(name = "type_armure_id")
     var typeArmure: TypeArmure? = null
 ) : Item(id, nom, description, cheminImage) {
-
-
 }

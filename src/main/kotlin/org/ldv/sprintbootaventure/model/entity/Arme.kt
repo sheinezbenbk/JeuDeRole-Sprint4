@@ -10,7 +10,7 @@ import org.ldv.sprintbootaventure.model.entity.TypeArme
 
 @Entity
 @DiscriminatorValue("arme")
-class Arme constructor(
+class Arme (
     id: Long? = null,
     nom: String,
     description: String,
@@ -25,7 +25,5 @@ class Arme constructor(
     @ManyToOne
     @JoinColumn(name = "type_arme_id")
     var typeArme: TypeArme? = null
-) : Item(id, nom, description, cheminImage) {
-
-
+) : Item(id, nom, description, cheminImage){
 }

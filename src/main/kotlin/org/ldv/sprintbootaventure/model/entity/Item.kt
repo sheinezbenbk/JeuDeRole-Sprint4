@@ -18,18 +18,21 @@ import jakarta.persistence.*
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "id", nullable = false)
         var id: Long? = null,
-// Nom de l'item
+        // Nom de l'item
         var nom: String,
-// Description de l'item
+        // Description de l'item
         var description: String,
-//Chemin vers l'image de l'item
+        //Chemin vers l'image de l'item
         var cheminImage:String?,
 
-    @OneToMany(mappedBy = "item")
-    val ligneInventaire: List<LigneInventaire> = mutableListOf()
+        @OneToMany(mappedBy = "item")
+        var items: MutableList<LigneInventaire> = mutableListOf()
+
+
+
+
     ) {
 // TODO sprint 5: methode utiliser
-
 
     }
 

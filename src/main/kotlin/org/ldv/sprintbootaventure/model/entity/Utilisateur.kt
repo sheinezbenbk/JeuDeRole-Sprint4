@@ -1,7 +1,7 @@
 package org.ldv.sprintbootaventure.model.entity
 
 import jakarta.persistence.*
-import javax.accessibility.AccessibleRole
+
 
 @Entity
 class Utilisateur(
@@ -16,8 +16,8 @@ class Utilisateur(
     @OneToMany(mappedBy = "personnage")
     var personnage: List<Personnage>? = null,
 
-    @OneToMany(mappedBy = "campagne")
-    var campagne: List<Campagne>? = null,
+    @OneToMany(mappedBy = "campagnes")
+    var campagnes: List<Campagne>? = null,
 
     @ManyToMany
     @JoinTable(
@@ -26,8 +26,6 @@ class Utilisateur(
         inverseJoinColumns = [JoinColumn(name = "role_id")]
     )
     var roles: List<Role>? = null
-
-
 
 ) {
 }

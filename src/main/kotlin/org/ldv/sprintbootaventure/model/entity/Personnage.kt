@@ -4,47 +4,44 @@ import jakarta.persistence.*
 
 
 @Entity
-class Personnage constructor (
+class Personnage(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     var id: Long? = null,
-    val nom : String,
-    val pointDeVie : Int,
-    val pointDeVieMax : Int,
-    val attaque : Int,
-    val defense : Int,
-    val endurance : Int,
-    val vitesse : Int,
-    val cheminImage : String,
+    val nom: String,
+    val pointDeVie: Int,
+    val attaque: Int,
+    val defense: Int,
+    val endurance: Int,
+    val vitesse: Int,
+    val cheminImage: String,
+    @OneToMany(mappedBy = "personnage")
+    var ligneInventaire: List<LigneInventaire> = mutableListOf(),
 
-@OneToMany (mappedBy = "personnage")
-val ligneInventaire: List<LigneInventaire> = mutableListOf()
+    @ManyToOne
+    @JoinColumn(name = "armure_id")
+    var armure: Armure? = null,
 
-)
-{
+    @ManyToOne
+    @JoinColumn(name = "arme_id")
+    var arme: Arme? = null,
 
-//    open fun attaque(adversaire: Personnage) {
-//        //TODO Mission 4.1
-//        if (armePrincipal != null) { //Si une arme est équipée, on additionne ses dégats aux dégats totaux.
-//            var degats = this.armePrincipal!!.calculerDegats() + (this.attaque / 2)
-//            degats -= adversaire.calculeDefense()
-//            if (degats <= 0) {
-//                degats = 1
-//            }
-//            adversaire.pointDeVie -= degats
-//            println("$nom attaque ${adversaire.nom} avec son arme ${armePrincipal} et inflige $degats points de dégâts.")
-//        } else { //Si une arme n'est pas équipée alors un 1 point de dégats sera ingligée
-//            var degats = this.attaque / 2
-//            degats -= adversaire.calculeDefense()
-//            if (degats <= 0) {
-//                degats = 1
-//            }
-//            println("$nom attaque ${adversaire.nom} avec une attaque de base et inflige $degats points de dégâts.")
-//        }
-//    }
+    @ManyToOne
+    @JoinColumn(name = "accessoire_id")
+    var accessoire: Accessoire? = null,
 
+    @OneToMany(mappedBy = "monstre", orphanRemoval = true)
+    var combats: MutableList<Combat> = mutableListOf(),
 
+    @OneToMany(mappedBy = "personnage", orphanRemoval = true)
+    var campagnes: MutableList<Campagne> = mutableListOf(),
 
+    @ManyToOne
+    @JoinColumn(name = "utilisateur_id")
+    var utilisateur: Utilisateur? = null,
 
+    ){
+    var pointDeVieMax: Int = 0
+        get() = 50 + (10 * (this.endurance))
 }

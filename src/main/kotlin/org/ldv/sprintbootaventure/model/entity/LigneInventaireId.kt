@@ -4,10 +4,9 @@ import jakarta.persistence.Embeddable
 import java.io.Serializable
 
 @Embeddable
-class ligneInventaireId(
+class LigneInventaireId(
     val personnageId: Long,
     val itemId: Long
-) : Serializable
-{
 
-}
+) : Serializable
+

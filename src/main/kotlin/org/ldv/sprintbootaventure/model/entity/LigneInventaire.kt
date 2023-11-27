@@ -10,18 +10,22 @@ import jakarta.persistence.MapsId
 class LigneInventaire (
 
     @EmbeddedId
-    var ligneInventaireId : ligneInventaireId? = null,
+    var ligneInventaireId : LigneInventaireId? = null,
 
     @MapsId("personnageId")
     @ManyToOne
-    @JoinColumn(name = "personnage_id")
+    @JoinColumn(name = "personnageId")
     var personnage: Personnage? = null,
+
 
     @MapsId("itemId")
     @ManyToOne
-    @JoinColumn(name = "item_id")
+    @JoinColumn(name = "itemId")
     var item: Item? = null,
 
-    val quantite: Int,
- ) {
-}
+    var id: Long,
+    var nom: String,
+    var description: String,
+    var quantite: String,
+
+)
